@@ -18,7 +18,7 @@ services:
   playwright-sandbox:
     build: ./sand_box
     ports:
-      - "8020:8020"          # lets you curl it from the host
+      - "8020:8020"          
       - "6080:6080"          # noVNC
       - "9222:9222"          # optional CDP
     shm_size: "256mb"
