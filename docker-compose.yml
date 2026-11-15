@@ -1,0 +1,67 @@
+# docker-compose.yml
+services:
+  mcp-server:
+    build: ./mcp_server
+    env_file: .env
+    ports:
+      - "8000:8000"          # exposed to host too, useful for debugging
+    volumes:
+      - mcp_data:/app/.data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/mcp/"]
+      interval: 10s
+      timeout: 19s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+
+  playwright-sandbox:
+    build: ./sand_box
+    ports:
+      - "8020:8020"          # lets you curl it from the host
+      - "6080:6080"          # noVNC
+      - "9222:9222"          # optional CDP
+    shm_size: "256mb"
+    mem_limit: 1g
+    cpus: 2
+    restart: unless-stopped
+
+  agent:
+    build: ./agent
+    env_file: .env
+    environment:
+      - MCP_URL=http://mcp-server:8000/mcp
+      - DB_URI=postgres://postgres:postgres@postgres:5432/postgres
+    ports:
+      - "2024:2024"
+    volumes:
+      - agent_data:/app/.data
+    depends_on:
+      mcp-server:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mcp_data:
+  agent_data:

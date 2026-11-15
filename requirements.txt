@@ -1,0 +1,6 @@
+# Install per-service requirements:
+#   pip install -r requirements/agent.txt
+#   pip install -r requirements/mcp_server.txt
+#   pip install -r requirements/sandbox.txt
+#
+# Or use the Docker images (recommended).
