@@ -21,103 +21,11 @@ from gdb import (
 )
 from logger import get_logger
 
-# from vec import add_chunks_to_chroma, vector_search
 from vec1 import add_chunks, vector_search
 
 logger = get_logger("prac")
 
-# tokenizer = AutoTokenizer.from_pretrained("gpt2")
-# processer = UltimateDataPrep("../../Downloads/text.txt", tokenizer)
-# processer.yolo()
-# docs = loader.load()
-# =======================================================
 
-# model = SentenceTransformer("all-MiniLM-L6-v2")
-# reranker = CrossEncoder("cross-encoder/ms-marco-TinyBERT-L-2-v2")
-
-# client = chromadb.PersistentClient(path="./chroma_db")
-
-# collection = client.get_or_create_collection(
-#     name="knowledge_base", metadata={"hnsw:space": "cosine"}
-# )
-# ==========================================================
-# DENSE_MODEL = "BAAI/bge-small-en-v1.5"
-# SPARSE_MODEL = "Qdrant/bm25"
-# RERANKER_MODEL = "Xenova/ms-marco-MiniLM-L-6-v2"
-# docs = loader.load()
-# dense_embedder = TextEmbedding(model_name=DENSE_MODEL)
-# sparse_embedder = SparseTextEmbedding(model_name=SPARSE_MODEL)
-# reranker = TextCrossEncoder(model_name=RERANKER_MODEL)
-
-
-# add_chunks_to_chroma(collection, model, docs)
-#     add_chunks(
-#     dense_embedder=dense_embedder, sparse_embedder=sparse_embedder, docs=docs
-# )
-
-# result = vector_search(
-#     query="who works at Ather",
-#     model=model,
-#     reranker=reranker,
-#     collection=collection,
-#     i=20,
-#     j=10,
-#     k=5,
-#     source_filter=None,
-# )
-# print(result)
-
-#
-# ============================================================
-#
-
-
-# URI = "neo4j://localhost"
-# AUTH = ("neo4j", "your_password_here")
-
-# query = "who works at ather?"
-
-# driver = GraphDatabase.driver(URI, auth=AUTH)
-# DENSE_MODEL = "BAAI/bge-small-en-v1.5"
-
-# dense_embedder = TextEmbedding(model_name=DENSE_MODEL)
-
-# entity_rel = extract_graph("../../Downloads/text.txt")
-# verified_entity_rel = verify_grounding(entity_rel, "../../Downloads/text.txt", 0.85)
-
-# dupies = detect_dupies(
-#     verified_entity_rel.entities, verified_entity_rel.relations, 85, 0.85
-# )
-# dupies = get_relationship_overlap(driver, dupies, 0.85)
-
-# stats = ingest_extraction_with_reporting(
-#    dense_embedder= dense_embedder, driver= driver, entity_collection_name= "entity_collection",
-#   result= verified_entity_rel, doc_id= "doc_1", batch_size= 200
-# )
-# print("======")
-# print(stats)
-
-# if dupies:
-#     for dupy in dupies:
-#         if len(dupy[0].name) >= len(dupy[1].name):
-#             merge_entities_in_graph(
-#                 driver,
-#                 canonical_name=dupy[0].name,
-#                 alias_name=dupy[1].name,
-#                 node_type=dupy[0].type.value,
-#             )
-#         merge_entities_in_graph(
-#             driver,
-#             canonical_name=dupy[0].name,
-#             alias_name=dupy[1].name,
-#             node_type=dupy[0].type.value,
-#         )
-
-# results, _ = graph_search(dense_embedder= dense_embedder, driver= driver, entity_collection_name="entity_collection", entity_mentions= [""], max_hops= 1)
-
-#
-# ====================================================================
-#
 genai_client = genai.Client()
 
 
@@ -320,5 +228,4 @@ if __name__ == "__main__":
     )
 
 
-# export BG_JOB_TIMEOUT_SECS=8800          # 30 minutes (default is often much lower)
-# export BG_JOB_ISOLATED_LOOPS=true
+
