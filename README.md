@@ -1,11 +1,11 @@
-# Helix — Multi-Agent GraphRAG Research Console
+# Nexus — Multi-Agent GraphRAG Research Console
 
-**Helix** is a production-oriented multi-agent system built on **LangGraph**.  
+**Nexus** is a production-oriented multi-agent system built on **LangGraph**.  
 It combines hierarchical RAG, knowledge-graph reasoning, episodic memory of past tool executions, secure browser automation, and full multi-interrupt human-in-the-loop control — exposed through a hardened NiceGUI console and a streaming FastAPI bridge.
 
 ---
 
-## Why Helix is different
+## Why Nexus is different
 
 Most agent demos stop at "LLM + a few tools". Helix goes further in concrete, engineering-level ways:
 
@@ -252,7 +252,7 @@ Open the console, create a thread, upload documents if needed, and start chattin
 
 ## License
 
-Add your preferred license (MIT or Apache-2.0 recommended).
+[LICENCE]
 
 ---
 
