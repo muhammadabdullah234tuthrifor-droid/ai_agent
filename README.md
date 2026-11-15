@@ -252,8 +252,9 @@ Open the console, create a thread, upload documents if needed, and start chattin
 
 ## License
 
-[LICENCE]
+## License
 
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ---
 
 Built with LangGraph, Qdrant, Neo4j, FastEmbed, Playwright, FastAPI, NiceGUI, and careful systems engineering.
